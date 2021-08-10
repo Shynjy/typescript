@@ -42,15 +42,65 @@ falarCom("André");
 
 // This
 
-function normalComThis() {
-  console.log(this);
-}
+// function normalComThis() {
+//   console.log(this);
+// }
 
-normalComThis();
+// normalComThis();
 
-const normalComThisEspecial = normalComThis.bind({nome: 'David'});
-normalComThisEspecial();
+// const normalComThisEspecial = normalComThis.bind({nome: 'David'});
+// normalComThisEspecial();
 
 // No arrow function o this nunca muda, conforme o seu contexto, ele se mantem ao contexto original do seu escopo.
 // const arrowComThis = () => console.log(this)
 // arrowComThis()
+
+// Parâmetro padrão
+function contagemRegressiva(inicio: number = 3): void {
+  console.log(inicio);
+
+  while(inicio > 0) {
+    inicio--;
+    console.log(inicio);
+  }
+  console.log('Fim!');
+}
+
+// contagemRegressiva();
+// contagemRegressiva(5);
+
+// Operador Spread & Rest
+const numbers: number[] = [1, 10, 99, -5]
+
+console.log(Math.max(...numbers));
+
+const turmaA: string[] = ["Ana", "Maria", "Ilma"];
+const turmaB: string[] = ["Arthur", "David", "Pereira", ...turmaA];
+
+console.log(turmaB);
+
+
+function retornaArray(...args: number[]): number[] {
+  return args;
+}
+
+const numeros = retornaArray(3, 5, 30, 20, 2);
+
+console.log(numeros);
+console.log(retornaArray(...numbers));
+
+// Operador Spread & Rest (Tupla)
+const tupla: [number, string, boolean] = [1, 'abc', false];
+
+function tuplaParam1(a: number, b: string, c: boolean): void {
+  console.log(`1) ${a} ${b} ${c}`);
+}
+
+tuplaParam1(...tupla);
+
+function tuplaParam2(...params: [number, string, boolean]): void {
+  // console.log(Array.isArray(params));
+  console.log(`2) ${params[0]} ${params[1]} ${params[2]}`)
+}
+
+tuplaParam2(...tupla);
