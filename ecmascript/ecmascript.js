@@ -25,3 +25,17 @@ const somar = function (n1, n2) {
 console.log(somar(2, 2));
 const subtrair = (n1, n2) => n1 - n2;
 console.log(subtrair(2, 3));
+const saudacao = () => console.log("Olá");
+saudacao();
+const falarCom = (pessoa) => console.log("Ola " + pessoa + "!");
+falarCom("André");
+// This
+function normalComThis() {
+    console.log(this);
+}
+normalComThis();
+const normalComThisEspecial = normalComThis.bind({ nome: 'David' });
+normalComThisEspecial();
+// No arrow function o this nunca muda, conforme o seu contexto, ele se mantem ao contexto original do seu escopo.
+// const arrowComThis = () => console.log(this)
+// arrowComThis()
