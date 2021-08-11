@@ -1,18 +1,18 @@
 "use strict";
 // Let & Const
-let seraQuePode = '?';
+let seraQuePode = "?";
 console.log(seraQuePode);
 // var seraQuePode = '?'; /* hoisting ERRO ocorre apenas com var */
 // let seraQuePode = '?'; /* sem hoisting ERRO ocorre */
 let estaFrio = true;
 if (estaFrio) {
     // var acao = 'Colocar o casaco!'; /* Passa para fora da condicional */
-    let acao = 'Colocar o casaco!'; /* Não passa o bloco gera erro */
+    let acao = "Colocar o casaco!"; /* Não passa o bloco gera erro */
 }
 // console.log(acao);
-var segredo = 'externo';
+var segredo = "externo";
 function revelar() {
-    var segredo = 'interno'; /* o var tem escopo de função */
+    var segredo = "interno"; /* o var tem escopo de função */
     console.log(segredo);
 }
 revelar(); /* utiliza o valor interno */
@@ -46,7 +46,7 @@ function contagemRegressiva(inicio = 3) {
         inicio--;
         console.log(inicio);
     }
-    console.log('Fim!');
+    console.log("Fim!");
 }
 // contagemRegressiva();
 // contagemRegressiva(5);
@@ -63,7 +63,7 @@ const numeros = retornaArray(3, 5, 30, 20, 2);
 console.log(numeros);
 console.log(retornaArray(...numbers));
 // Operador Spread & Rest (Tupla)
-const tupla = [1, 'abc', false];
+const tupla = [1, "abc", false];
 function tuplaParam1(a, b, c) {
     console.log(`1) ${a} ${b} ${c}`);
 }
@@ -73,3 +73,46 @@ function tuplaParam2(...params) {
     console.log(`2) ${params[0]} ${params[1]} ${params[2]}`);
 }
 tuplaParam2(...tupla);
+// Destructuring (array)
+const caracteristicas = ["Motor Zetec 1.8", 2020];
+const [motor, ano] = caracteristicas;
+console.log(motor);
+console.log(ano);
+// Destructuring (object)
+const item = {
+    nome: "SSD 480GB",
+    preco: 200,
+};
+const { preco, nome: n } = item;
+console.log(n);
+console.log(preco);
+// Desafios
+// 1
+const dobro = (valor) => valor * 2;
+console.log("Resp: Desafio 1");
+console.log(dobro(10));
+// 2
+function dizerOla(nome = 'Pessoa') {
+    console.log("Ola, " + nome);
+}
+;
+console.log("Resp: Desafio 2");
+dizerOla();
+dizerOla("Anna");
+// 3
+const nums = [-3, 33, 38, 5];
+console.log("Resp: Desafio 3");
+console.log(Math.min(...nums));
+// 4
+const array = [55, 20];
+array.push(...nums);
+console.log("Resp: Desafio 4");
+console.log(array);
+// 5
+const notas = [8.5, 6.3, 9.4];
+const [nota1, nota2, nota3] = notas;
+const cientista = { primeiroNome: "Will", experiencia: 12 };
+const { experiencia, primeiroNome } = cientista;
+console.log("Resp: Desafio 5");
+console.log(primeiroNome, experiencia);
+console.log(nota1, nota2, nota3);
