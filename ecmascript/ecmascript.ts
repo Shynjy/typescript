@@ -160,3 +160,46 @@ const {experiencia, primeiroNome} = cientista;
 console.log("Resp: Desafio 5");
 console.log(primeiroNome, experiencia);
 console.log(nota1, nota2, nota3)
+
+// Callback
+
+function esperar3() {
+  setTimeout(() => {
+    // console.log('3s depois...');
+    return '3s depois...';     
+  }, 3000);
+}
+
+const resultado = esperar3();
+
+console.log(resultado); // undefined
+
+function esperar4(callback: (dado: string) => void)  {
+  setTimeout(() => {
+    callback('4s depois...');
+  }, 4000)
+}
+
+const callback = function(resultado: string): void {
+  console.log(resultado)
+}
+
+esperar4(callback);
+
+// Promise
+function esperar3Promise() {
+  return new Promise((resolve: any) => {
+    setTimeout(() => {
+      resolve( '3s depois promise...');     
+    }, 3000);
+  })
+}
+
+esperar3Promise().then(valor => console.log(valor));
+
+fetch('https://swapi.dev/api/people/1')
+  .then(resp => resp.json())
+  .then(perso => perso['films'])
+  .then(film => fetch(film[0]))
+  .then(title => title.json())
+  .then(resp => console.log(resp.title))
