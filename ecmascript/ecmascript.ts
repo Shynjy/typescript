@@ -1,205 +1,207 @@
-// Let & Const
-let seraQuePode = "?";
-console.log(seraQuePode);
-// var seraQuePode = '?'; /* hoisting ERRO ocorre apenas com var */
-// let seraQuePode = '?'; /* sem hoisting ERRO ocorre */
+(function () {
+  // Let & Const
+  let seraQuePode = "?";
+  console.log(seraQuePode);
+  // var seraQuePode = '?'; /* hoisting ERRO ocorre apenas com var */
+  // let seraQuePode = '?'; /* sem hoisting ERRO ocorre */
 
-let estaFrio = true;
+  let estaFrio = true;
 
-if (estaFrio) {
-  // var acao = 'Colocar o casaco!'; /* Passa para fora da condicional */
-  let acao = "Colocar o casaco!"; /* Não passa o bloco gera erro */
-}
-
-// console.log(acao);
-
-var segredo = "externo";
-
-function revelar() {
-  var segredo = "interno"; /* o var tem escopo de função */
-  console.log(segredo);
-}
-revelar(); /* utiliza o valor interno */
-console.log(segredo);
-
-// Arrow function
-// Função normal
-const somar = function (n1: number, n2: number): number {
-  return n1 + n2;
-};
-
-console.log(somar(2, 2));
-
-const subtrair = (n1: number, n2: number): number => n1 - n2;
-
-console.log(subtrair(2, 3));
-
-const saudacao = () => console.log("Olá");
-saudacao();
-
-const falarCom = (pessoa: string) => console.log("Ola " + pessoa + "!");
-falarCom("André");
-
-// This
-
-// function normalComThis() {
-//   console.log(this);
-// }
-
-// normalComThis();
-
-// const normalComThisEspecial = normalComThis.bind({nome: 'David'});
-// normalComThisEspecial();
-
-// No arrow function o this nunca muda, conforme o seu contexto, ele se mantem ao contexto original do seu escopo.
-// const arrowComThis = () => console.log(this)
-// arrowComThis()
-
-// Parâmetro padrão
-function contagemRegressiva(inicio: number = 3): void {
-  console.log(inicio);
-
-  while (inicio > 0) {
-    inicio--;
-    console.log(inicio);
+  if (estaFrio) {
+    // var acao = 'Colocar o casaco!'; /* Passa para fora da condicional */
+    // let acao = "Colocar o casaco!"; /* Não passa o bloco gera erro */
   }
-  console.log("Fim!");
-}
 
-// contagemRegressiva();
-// contagemRegressiva(5);
+  // console.log(acao);
 
-// Operador Spread & Rest
-const numbers: number[] = [1, 10, 99, -5];
+  var segredo = "externo";
 
-console.log(Math.max(...numbers));
+  function revelar() {
+    var segredo = "interno"; /* o var tem escopo de função */
+    console.log(segredo);
+  }
+  revelar(); /* utiliza o valor interno */
+  console.log(segredo);
 
-const turmaA: string[] = ["Ana", "Maria", "Ilma"];
-const turmaB: string[] = ["Arthur", "David", "Pereira", ...turmaA];
+  // Arrow function
+  // Função normal
+  const somar = function (n1: number, n2: number): number {
+    return n1 + n2;
+  };
 
-console.log(turmaB);
+  console.log(somar(2, 2));
 
-function retornaArray(...args: number[]): number[] {
-  return args;
-}
+  const subtrair = (n1: number, n2: number): number => n1 - n2;
 
-const numeros = retornaArray(3, 5, 30, 20, 2);
+  console.log(subtrair(2, 3));
 
-console.log(numeros);
-console.log(retornaArray(...numbers));
+  const saudacao = () => console.log("Olá");
+  saudacao();
 
-// Operador Spread & Rest (Tupla)
-const tupla: [number, string, boolean] = [1, "abc", false];
+  const falarCom = (pessoa: string) => console.log("Ola " + pessoa + "!");
+  falarCom("André");
 
-function tuplaParam1(a: number, b: string, c: boolean): void {
-  console.log(`1) ${a} ${b} ${c}`);
-}
+  // This
 
-tuplaParam1(...tupla);
+  // function normalComThis() {
+  //   console.log(this);
+  // }
 
-function tuplaParam2(...params: [number, string, boolean]): void {
-  // console.log(Array.isArray(params));
-  console.log(`2) ${params[0]} ${params[1]} ${params[2]}`);
-}
+  // normalComThis();
 
-tuplaParam2(...tupla);
+  // const normalComThisEspecial = normalComThis.bind({nome: 'David'});
+  // normalComThisEspecial();
 
-// Destructuring (array)
-const caracteristicas = ["Motor Zetec 1.8", 2020];
+  // No arrow function o this nunca muda, conforme o seu contexto, ele se mantem ao contexto original do seu escopo.
+  // const arrowComThis = () => console.log(this)
+  // arrowComThis()
 
-const [motor, ano] = caracteristicas;
-console.log(motor);
-console.log(ano);
+  // Parâmetro padrão
+  function contagemRegressiva(inicio: number = 3): void {
+    console.log(inicio);
 
-// Destructuring (object)
-const item = {
-  nome: "SSD 480GB",
-  preco: 200,
-};
+    while (inicio > 0) {
+      inicio--;
+      console.log(inicio);
+    }
+    console.log("Fim!");
+  }
 
-const { preco, nome: n } = item;
+  contagemRegressiva();
+  contagemRegressiva(5);
 
-console.log(n);
-console.log(preco);
+  // Operador Spread & Rest
+  const numbers: number[] = [1, 10, 99, -5];
 
-// Desafios
+  console.log(Math.max(...numbers));
 
-// 1
-const dobro = (valor: number): number => valor * 2;
+  const turmaA: string[] = ["Ana", "Maria", "Ilma"];
+  const turmaB: string[] = ["Arthur", "David", "Pereira", ...turmaA];
 
-console.log("Resp: Desafio 1");
-console.log(dobro(10));
+  console.log(turmaB);
 
-// 2
-function dizerOla(nome: string = 'Pessoa'): void {
-  console.log("Ola, " + nome);
-};
+  function retornaArray(...args: number[]): number[] {
+    return args;
+  }
 
-console.log("Resp: Desafio 2");
-dizerOla();
-dizerOla("Anna");
+  const numeros = retornaArray(3, 5, 30, 20, 2);
 
-// 3
-const nums: number[] = [-3, 33, 38, 5];
-console.log("Resp: Desafio 3");
-console.log(Math.min(...nums));
+  console.log(numeros);
+  console.log(retornaArray(...numbers));
 
-// 4
-const array = [55, 20];
-array.push(...nums);
-console.log("Resp: Desafio 4");
-console.log(array)
+  // Operador Spread & Rest (Tupla)
+  const tupla: [number, string, boolean] = [1, "abc", false];
 
-// 5
-const notas: number[] = [8.5, 6.3, 9.4]
-const [nota1, nota2, nota3] = notas;
+  function tuplaParam1(a: number, b: string, c: boolean): void {
+    console.log(`1) ${a} ${b} ${c}`);
+  }
 
-const cientista = {primeiroNome: "Will", experiencia: 12}
-const {experiencia, primeiroNome} = cientista;
+  tuplaParam1(...tupla);
 
-console.log("Resp: Desafio 5");
-console.log(primeiroNome, experiencia);
-console.log(nota1, nota2, nota3)
+  function tuplaParam2(...params: [number, string, boolean]): void {
+    // console.log(Array.isArray(params));
+    console.log(`2) ${params[0]} ${params[1]} ${params[2]}`);
+  }
 
-// Callback
+  tuplaParam2(...tupla);
 
-function esperar3() {
-  setTimeout(() => {
-    // console.log('3s depois...');
-    return '3s depois...';     
-  }, 3000);
-}
+  // Destructuring (array)
+  const caracteristicas = ["Motor Zetec 1.8", 2020];
 
-const resultado = esperar3();
+  const [motor, ano] = caracteristicas;
+  console.log(motor);
+  console.log(ano);
 
-console.log(resultado); // undefined
+  // Destructuring (object)
+  const item = {
+    nome: "SSD 480GB",
+    preco: 200,
+  };
 
-function esperar4(callback: (dado: string) => void)  {
-  setTimeout(() => {
-    callback('4s depois...');
-  }, 4000)
-}
+  const { preco, nome: n } = item;
 
-const callback = function(resultado: string): void {
-  console.log(resultado)
-}
+  console.log(n);
+  console.log(preco);
 
-esperar4(callback);
+  // Desafios
 
-// Promise
-function esperar3Promise() {
-  return new Promise((resolve: any) => {
+  // 1
+  const dobro = (valor: number): number => valor * 2;
+
+  console.log("Resp: Desafio 1");
+  console.log(dobro(10));
+
+  // 2
+  function dizerOla(nome: string = "Pessoa"): void {
+    console.log("Ola, " + nome);
+  }
+
+  console.log("Resp: Desafio 2");
+  dizerOla();
+  dizerOla("Anna");
+
+  // 3
+  const nums: number[] = [-3, 33, 38, 5];
+  console.log("Resp: Desafio 3");
+  console.log(Math.min(...nums));
+
+  // 4
+  const array = [55, 20];
+  array.push(...nums);
+  console.log("Resp: Desafio 4");
+  console.log(array);
+
+  // 5
+  const notas: number[] = [8.5, 6.3, 9.4];
+  const [nota1, nota2, nota3] = notas;
+
+  const cientista = { primeiroNome: "Will", experiencia: 12 };
+  const { experiencia, primeiroNome } = cientista;
+
+  console.log("Resp: Desafio 5");
+  console.log(primeiroNome, experiencia);
+  console.log(nota1, nota2, nota3);
+
+  // Callback
+
+  function esperar3() {
     setTimeout(() => {
-      resolve( '3s depois promise...');     
+      // console.log('3s depois...');
+      return "3s depois...";
     }, 3000);
-  })
-}
+  }
 
-esperar3Promise().then(valor => console.log(valor));
+  const resultado = esperar3();
 
-fetch('https://swapi.dev/api/people/1')
-  .then(resp => resp.json())
-  .then(perso => perso['films'])
-  .then(film => fetch(film[0]))
-  .then(title => title.json())
-  .then(resp => console.log(resp.title))
+  console.log(resultado); // undefined
+
+  function esperar4(callback: (dado: string) => void) {
+    setTimeout(() => {
+      callback("4s depois...");
+    }, 4000);
+  }
+
+  const callback = function (resultado: string): void {
+    console.log(resultado);
+  };
+
+  esperar4(callback);
+
+  // Promise
+  function esperar3Promise() {
+    return new Promise((resolve: any) => {
+      setTimeout(() => {
+        resolve("3s depois promise...");
+      }, 3000);
+    });
+  }
+
+  esperar3Promise().then((valor) => console.log(valor));
+
+  fetch("https://swapi.dev/api/people/1")
+    .then((resp) => resp.json())
+    .then((perso) => perso["films"])
+    .then((film) => fetch(film[0]))
+    .then((title) => title.json())
+    .then((resp) => console.log(resp.title));
+})();
