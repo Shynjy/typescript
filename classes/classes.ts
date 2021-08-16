@@ -113,5 +113,40 @@
   console.log(f40.acelerar())
   console.log(f40.frear())
   
-  
+  // Getters & Setters
+  class Pessoa {
+    private _idade: number = 0;
+
+
+    get idade(): number {
+      return this._idade
+    }
+
+    set idade(valor: number) {
+      if(valor >= 0 && valor <= 120) {
+        this._idade = valor
+      }
+    }
+
+   }
+
+   const pessoa1 = new Pessoa
+   pessoa1.idade = 10
+
+   console.log(pessoa1.idade);
+   
+   // Atributos e métodos estáticos
+   class Matematica {
+     static PI: number = 3.1416;
+
+     static areaCirc(raio: number): number {
+       return this.PI * raio * raio
+     }
+   }
+
+  //  console.log(new Matematica().areaCirc(5)); // Sem static
+   console.log(Matematica.areaCirc(5)); // Com static
+   
+
+// Fim do escopo
 })();
