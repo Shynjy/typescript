@@ -105,7 +105,7 @@
     // Atributos e métodos estáticos
     class Matematica {
         static areaCirc(raio) {
-            return this.PI * (raio * raio);
+            return Matematica.PI * (raio * raio);
         }
     }
     Matematica.PI = 3.1416;
@@ -136,5 +136,28 @@
     c1 = new Multiplicacao();
     c1.executar(2, 3, 4, 5);
     console.log(c1.getResultado());
+    // Singleton
+    class Unico {
+        constructor() { }
+        static getInstance() {
+            return Unico.instance;
+        }
+        agora() {
+            return new Date();
+        }
+    }
+    Unico.instance = new Unico();
+    console.log(Unico.getInstance().agora());
+    // Atributos apenas leitura
+    class Aviao {
+        constructor(modelo, prefixo) {
+            this.prefixo = prefixo;
+            this.modelo = modelo;
+        }
+    }
+    const turboHelice = new Aviao('Tu-114', 'PT-ABC');
+    // turboHelice.modelo = 'DC-8';
+    // turboHelice.prefixo = 'PT-DEF';
+    console.log(turboHelice);
     // Fim do escopo
 })();

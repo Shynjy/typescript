@@ -1,4 +1,5 @@
 (function () {
+
   class Data {
     // Público por padrão
     public dia: number;
@@ -140,7 +141,7 @@
      static PI: number = 3.1416;
 
      static areaCirc(raio: number): number {
-       return this.PI * (raio * raio)
+       return Matematica.PI * (raio * raio)
      }
    }
 
@@ -179,6 +180,41 @@ c1 = new Multiplicacao()
 c1.executar(2, 3, 4, 5)
 console.log(c1.getResultado());
 
+
+// Singleton
+class Unico {
+  private static instance: Unico = new Unico();
+  private constructor() {}
+
+  static getInstance(): Unico {
+    return  Unico.instance
+  }
+
+  agora() {
+    return new Date();
+  }
+}
+
+console.log(Unico.getInstance().agora());
+
+// Atributos apenas leitura
+class Aviao {
+  // readonly serve para sinalizar que esse atributo só é para leitura
+  readonly modelo: string
+
+  constructor(
+    modelo: string,
+    readonly prefixo: string
+  ){
+    this.modelo = modelo
+  }
+}
+
+const turboHelice = new Aviao('Tu-114', 'PT-ABC');
+// turboHelice.modelo = 'DC-8';
+// turboHelice.prefixo = 'PT-DEF';
+
+console.log(turboHelice);
 
 // Fim do escopo
 })();
