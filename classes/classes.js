@@ -105,11 +105,36 @@
     // Atributos e métodos estáticos
     class Matematica {
         static areaCirc(raio) {
-            return this.PI * raio * raio;
+            return this.PI * (raio * raio);
         }
     }
     Matematica.PI = 3.1416;
     //  console.log(new Matematica().areaCirc(5)); // Sem static
-    console.log(Matematica.areaCirc(5)); // Com static
+    console.log(+Matematica.areaCirc(8).toFixed(2)); // Com static
+    // Classe abstrata
+    class Calculo {
+        constructor() {
+            this.resultado = 0;
+        }
+        getResultado() {
+            return this.resultado;
+        }
+    }
+    class Soma extends Calculo {
+        executar(...numeros) {
+            this.resultado = numeros.reduce((t, a) => t + a);
+        }
+    }
+    class Multiplicacao extends Calculo {
+        executar(...numeros) {
+            this.resultado = numeros.reduce((t, a) => t * a);
+        }
+    }
+    let c1 = new Soma();
+    c1.executar(2, 3, 4, 5);
+    console.log(c1.getResultado());
+    c1 = new Multiplicacao();
+    c1.executar(2, 3, 4, 5);
+    console.log(c1.getResultado());
     // Fim do escopo
 })();
