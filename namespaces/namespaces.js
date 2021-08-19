@@ -11,8 +11,8 @@
 // }
 ///<reference path="geometriaCirc.ts"/>
 ///<reference path="geometriaRect.ts"/>
-const PI = 4;
+// const PI = 4;
 console.log(Areas.circunferencia(10));
 console.log(Areas.retangulo(5, 28));
-console.log(PI); // escopo fora do namespace
+// console.log(PI); // escopo fora do namespace
 console.log(Areas.PI); // escopo do namespace
