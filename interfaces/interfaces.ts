@@ -62,3 +62,68 @@ potencia = function(base: number, exp: number): number {
 }
 
 console.log(potencia(8, 2));
+
+// Herança
+interface A {
+  a(): void
+}
+
+interface B {
+  b(): void
+}
+
+interface ABC extends A, B {
+  c(): void
+}
+
+class RealA implements A {
+  a(): void {}
+}
+
+class RealAB implements A, B {
+  a(): void {}
+  b(): void {}
+}
+
+class RealABC implements ABC {
+  a(): void {}
+  b(): void {}
+  c(): void {}
+}
+
+abstract class AbstrataABD implements A, B {
+  a(): void {}
+  b(): void {}
+  abstract d(): void
+}
+
+
+const x = 2
+const y = 3
+const z = 4
+
+interface Object {
+  log(): void
+}
+
+Object.prototype.log = function() {
+  console.log(this.toString());
+  
+}
+
+console.log(x);
+console.log(y);
+console.log(z);
+
+x.log()
+y.log()
+z.log()
+
+const cli = {
+  nome: 'David',
+  toString() {
+    return this.nome
+  }
+}
+
+cli.log()
