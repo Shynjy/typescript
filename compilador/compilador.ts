@@ -1,7 +1,7 @@
 (function () {
 
   let canal: string = "NerdCast";
-  let inscritos: number = 610234;
+  // let inscritos: number = 610234;
 
   // canal = inscritos;
 
@@ -9,14 +9,16 @@
 
 
   function saudar(isManha: boolean, horas: number): string {
-    let a = 1;
+    let a = horas;
     let saudacao: string;
     if(isManha) {
-      saudacao = "Bom dia!";
+      saudacao = `Bom dia são ${a}hr(s)`;
     } else {
       saudacao = "Tenha um bom dia!"
     }
     return saudacao;
   }
+
+  console.log(saudar(true, 8));
 
 })();

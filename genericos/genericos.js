@@ -78,7 +78,7 @@ class DiferencaEntreDatas extends OperacaoBinaria {
 const d1 = new Data(23, 8, 2021);
 const d2 = new Data(9, 5, 1988);
 console.log(new DiferencaEntreDatas(d1, d2).executar());
-// Desafio
+// Desafio 1
 class Fila {
     constructor(...args) {
         this.fila = args;
@@ -107,3 +107,43 @@ fila1.imprimir();
 console.log(fila1.proximo());
 console.log(fila1.proximo());
 fila1.imprimir();
+class Mapa {
+    constructor() {
+        this.itens = new Array();
+    }
+    obter(chave) {
+        const callback = (i) => i.chave === chave;
+        const resultado = this.itens.filter(callback);
+        return resultado ? resultado[0] : null;
+    }
+    colocar(element) {
+        const encontrado = this.obter(element.chave);
+        if (encontrado) {
+            encontrado.valor = element.valor;
+        }
+        else {
+            this.itens.push(element);
+        }
+    }
+    limpar() {
+        this.itens = Array();
+    }
+    imprimir() {
+        console.log(this.itens);
+    }
+}
+const mapa = new Mapa();
+mapa.colocar({ chave: 1, valor: 'Pedro' });
+mapa.colocar({ chave: 2, valor: 'Rebeca' });
+mapa.colocar({ chave: 1, valor: 'Gustavo' });
+mapa.colocar({ chave: 3, valor: 'Maria' });
+console.log(mapa.obter(2));
+mapa.imprimir();
+mapa.limpar();
+mapa.imprimir();
+let casa = [1, 2];
+console.log(casa);
+let casa2 = casa;
+casa2[0] = 3;
+console.log(casa2);
+console.log(casa);
