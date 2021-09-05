@@ -1,7 +1,25 @@
-# Typescript - Curso COD3R #
+# Typescript - Curso COD3R
 
-## live-server ##
-npm start ou yarn start
+## Criar arquivo package.json
 
-## Compilar automaticamente ##
-tsc -w
+`npm init -y`
+
+## Criar arquivo tsconfig.js
+
+`tsc --init`
+
+## live-server
+
+`npm start, yarn start ou npx live-server`
+
+## Compilar automaticamente
+
+`tsc -w`
+
+## Criar base react em typescript
+
+OLD
+`npx create-react-app react-integracao --typescript`
+
+NEW
+`npx create-react-app react-integracao --template typescript`
